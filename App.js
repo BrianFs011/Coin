@@ -54,6 +54,7 @@ export default function App() {
   const [coinsGraphicList, setCoinsGraphicList] = useState([0]);
   const [days, setDays] = useState(30);
   const [upDateData,setUpDateData] = useState(true);
+  const [price, setPrice] = useState();
 
   function updateDay(number){
     setDays(number);
@@ -65,15 +66,17 @@ export default function App() {
     getListCoins(url(days)).then((data)=>{
       setCoinsList(data)
     });
-
+    
     getPriceCoinsGraphic(url(days)).then((dataG)=>{
       setCoinsGraphicList(dataG)
+      setPrice(coinsGraphicList.pop())
     });
-
+    
+    
     if(upDateData){
       setUpDateData(false)
     }
-
+    
   },[upDateData]);
   
   return (
@@ -82,7 +85,7 @@ export default function App() {
       backgroundColor='#faaf2e'
       barStyle='dark-content'
       />
-      <CorrentPrice  infoDataGraphic={coinsGraphicList}/>
+      <CorrentPrice  lastCotation={price}/>
       <HistoryGraphic infoDataGraphic={coinsGraphicList} />
       <QuotationsList filterDay={updateDay} listTransactions={coinsList}/>
 
