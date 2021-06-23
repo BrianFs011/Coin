@@ -11,7 +11,7 @@ export default StyleSheet.create({
   buttonQuery:{
     width: 50,
     height: 30,
-    backgroundColor:'#f50d41',
+    backgroundColor:'#e39e27',
     borderRadius: 50,
     alignItems: 'center',
     fontWeight:'bold',
@@ -20,7 +20,7 @@ export default StyleSheet.create({
     paddingBottom: 20,
   },
   textButtonQuery:{
-    color:'#fff',
+    color:'#000',
     fontSize: 14,
     fontWeight: 'bold',
   },

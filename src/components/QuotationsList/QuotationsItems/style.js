@@ -28,19 +28,20 @@ export default StyleSheet.create({
     alignContent: 'flex-start',
   },
   contextRight:{
+    color:'#fff',
     width: '60%',
     alignItems: 'flex-end',
   },
   dayCotation:{
     fontSize: 16,
-    paddingLeft: 3,
-    color:'#FFFF',
+    paddingLeft: 5,
+    color:'#fff',
     fontWeight: 'bold',
   },
   price:{
     fontSize: 18,
     paddingRight: 2,
-    color:'#FFFF',
+    color:'#fff',
     fontWeight: 'bold',
   }
 })

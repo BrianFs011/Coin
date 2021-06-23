@@ -8,7 +8,7 @@ export default StyleSheet.create({
     marginBottom: 20,
   },
   currentPrice:{
-    color: '#f50d41',
+    color: '#faaf2e',
     fontSize: 22,
     fontWeight:'bold',
     paddingTop: 20,

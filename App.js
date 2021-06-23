@@ -4,7 +4,6 @@ import { StyleSheet, Text, View, SafeAreaView, Platform, StatusBar } from 'react
 import CorrentPrice from './src/components/CurrentPrice/index';
 import HistoryGraphic from './src/components/HistoryGraphic';
 import QuotationsList from './src/components/QuotationsList';
-import QuotationItems from './src/components/QuotationsList/QuotationsItems';
 
 function addZero(number){
   if(number <= 9){
@@ -16,15 +15,15 @@ function addZero(number){
 function url(qtdDays){
   const date = new Date();
   const listLastDays = qtdDays;
-  const end_date = `${date.getFullYear()}-${addZero(date.getMonth()+1)}-${addZero(date.getDay())}`;
+  const end_date = `${date.getFullYear()}-${addZero(date.getMonth()+1)}-${addZero(date.getDate())}`;
   date.setDate(date.getDate() - listLastDays);
-  const start_date = `${date.getFullYear()}-${addZero(date.getMonth()+1)}-${addZero(date.getDay())}`;
+  const start_date = `${date.getFullYear()}-${addZero(date.getMonth()+1)}-${addZero(date.getDate())}`;
 
   return `https://api.coindesk.com/v1/bpi/historical/close.json?start=${start_date}&end=${end_date}`
 }
 
 async function getListCoins(url){
-  let response = await fecth(url);
+  let response = await fetch(url);
   let returnApi = await response.json();
   let selectListQuotations = returnApi.bpi;
   const queryCoinsList = Object.keys(selectListQuotations).map((key)=>{
@@ -40,13 +39,13 @@ async function getListCoins(url){
 }
 
 async function getPriceCoinsGraphic(url){
-  let responseG = await fecth(url);
+  let responseG = await fetch(url);
   let returnApiG = await responseG.json();
   let selectListQuotationsG = returnApiG.bpi;
-  const queryCoinsList = Object.keys(selectListQuotationsG).map((key)=>{
-  selectListQuotationsG[key]   
+  const queryCoinsListG = Object.keys(selectListQuotationsG).map((key)=>{
+   return selectListQuotationsG[key]   
   })
-  let dataG= queryCoinsList;
+  let dataG= queryCoinsListG;
   return dataG;
 }
 
@@ -80,13 +79,13 @@ export default function App() {
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar 
-      backgroundColor='#f50d41'
+      backgroundColor='#faaf2e'
       barStyle='dark-content'
       />
-      <CorrentPrice/>
-      <HistoryGraphic/>
-      <QuotationsList/>
-      <QuotationItems/>
+      <CorrentPrice  />
+      <HistoryGraphic infoDataGraphic={coinsGraphicList} />
+      <QuotationsList filterDay={updateDay} listTransactions={coinsList}/>
+
     </SafeAreaView>
   );
 }
