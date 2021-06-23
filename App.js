@@ -82,7 +82,7 @@ export default function App() {
       backgroundColor='#faaf2e'
       barStyle='dark-content'
       />
-      <CorrentPrice  />
+      <CorrentPrice  infoDataGraphic={coinsGraphicList}/>
       <HistoryGraphic infoDataGraphic={coinsGraphicList} />
       <QuotationsList filterDay={updateDay} listTransactions={coinsList}/>
 
